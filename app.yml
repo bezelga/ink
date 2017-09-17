@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: app
 spec:
-  replicas: 2
+  replicas: 5
   template:
     metadata:
       labels:
@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: bezelga/ink:latest
+          image: bezelga/ink:v1
           imagePullPolicy: Always
           env:
             - name: "REDIS_URL"
