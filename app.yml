@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: app
+    spec:
+      containers:
+        - name: app
+          image: bezelga/ink:latest
+          imagePullPolicy: Always
+          env:
+            - name: "REDIS_URL"
+              value: "redis://$(REDIS_SERVICE_HOST):$(REDIS_SERVICE_PORT)"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app
+  labels:
+    name: app
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  selector:
+    name: app
