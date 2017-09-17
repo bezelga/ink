@@ -1,0 +1,34 @@
+{{- if .Values.ink.enabled }}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "fullname" . }}-ink
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+  annotations:
+  {{- if .Values.ink.ssl }}
+    kubernetes.io/tls-acme: "true"
+  {{- end }}
+  {{- if .Values.ink.ingress }}
+  {{- range $key, $value := .Values.ink.ingress.annotations }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
+  {{- end }}
+spec:
+  rules:
+  - host: {{ .Values.ink.domain }}
+    http:
+      paths:
+      - backend:
+          serviceName: app
+          servicePort: 80
+  {{- if .Values.ink.ssl }}
+  tls:
+  - secretName: traefik-traefik-default-cert
+    hosts:
+      - {{ .Values.ink.domain }}
+  {{- end }}
+{{- end }}
