@@ -1,7 +1,5 @@
 node {
-  def project = 'infoslack-1322'
   def appName = 'ink'
-  def imageTag = "gcr.io/${project}/${appName}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
   def imageTag = "bezelga/${appName}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
 
   stage 'Clone repo'
