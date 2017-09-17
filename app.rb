@@ -1,6 +1,6 @@
 require 'sinatra'
-require 'bundler/setup'
 require 'redis'
+require 'bundler/setup'
 
 set :redis, Redis.new(url: ENV['REDIS_URL'])
 
@@ -9,7 +9,6 @@ get '/' do
 end
 
 get '/ink' do
-  # redis = Redis.new(url: ENV['REDIS_URL'])
   settings.redis.incr("counter").to_s
 end
 
