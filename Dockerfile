@@ -7,7 +7,7 @@ RUN bundle install
 ENV APP /app
 WORKDIR $APP
 ADD . $APP
+# RUN bundle install 
 
 EXPOSE 5000
-ENTRYPOINT ["rackup"]
-CMD ["--host", "0.0.0.0", "-p", "5000"]
+CMD rackup --host 0.0.0.0 -p 5000

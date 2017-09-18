@@ -19,7 +19,6 @@ kind: Service
 metadata:
   name: redis
 spec:
-  # Match pods with these labels
   selector:
     name: redis
   ports:
