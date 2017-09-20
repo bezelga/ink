@@ -5,7 +5,7 @@ require 'bundler/setup'
 set :redis, Redis.new(url: ENV['REDIS_URL'])
 
 get '/' do
-  'hello frank sinatra'
+  'hello ray charles' 
 end
 
 get '/ink' do
