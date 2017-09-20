@@ -27,8 +27,7 @@ spec:
           servicePort: 80
   {{- if .Values.ink.ssl }}
   tls:
-  - secretName: traefik-traefik-default-cert
-    hosts:
-      - {{ .Values.ink.domain }}
+  - hosts:
+    - {{ .Values.ink.domain }}
   {{- end }}
 {{- end }}

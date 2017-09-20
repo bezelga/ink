@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: bezelga/ink:v.2
+          image: bezelga/ink:latest
           imagePullPolicy: Always
           env:
             - name: "REDIS_URL"
@@ -24,7 +24,7 @@ metadata:
   labels:
     name: app
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 80

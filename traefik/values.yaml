@@ -2,7 +2,7 @@
 image: traefik
 imageTag: 1.3.8
 serviceType: LoadBalancer
-loadBalancerIP:
+loadBalancerIP: 35.202.232.200
 #loadBalancerSourceRanges: []
 replicas: 1
 cpuRequest: 100m
@@ -26,7 +26,7 @@ ssl:
 acme:
   enabled: true
   email: fabianobeselga@gmail.com
-  staging: true
+  staging: false
   # Save ACME certs to a persistent volume. WARNING: If you do not do this, you will re-request
   # certs every time a pod (re-)starts and you WILL be rate limited!
   persistence:
@@ -60,7 +60,7 @@ service:
   #   key: value
 ink:
   enabled: true
-  domain: hello.ink.fabiano.io
+  domain: v1.ink.fabiano.io
   ssl: true
   
 gzip:
