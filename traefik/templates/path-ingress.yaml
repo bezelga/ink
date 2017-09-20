@@ -4,7 +4,7 @@ metadata:
   name: path-ingress
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.frontend.rule.type: PathPrefixStrip
+    traefik.frontend.rule.type: Path
 spec:
   rules:
   - host: ink.fabiano.io
@@ -13,8 +13,4 @@ spec:
       - path: /app
         backend:
           serviceName: app
-          servicePort: 80
-      - path: /blog
-        backend:
-          serviceName: wp-wordpress
           servicePort: 80

@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: bezelga/ink:latest
+          image: bezelga/ink:v2
           imagePullPolicy: Always
           env:
             - name: "REDIS_URL"

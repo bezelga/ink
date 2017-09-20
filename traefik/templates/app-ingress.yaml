@@ -25,9 +25,10 @@ spec:
       - backend:
           serviceName: app
           servicePort: 80
-  {{- if .Values.ink.ssl }}
-  tls:
-  - hosts:
-    - {{ .Values.ink.domain }}
-  {{- end }}
+  - host: blog.ink.fabiano.io
+    http:
+      paths:
+      - backend:
+          serviceName: wp-wordpress
+          servicePort: 80
 {{- end }}
